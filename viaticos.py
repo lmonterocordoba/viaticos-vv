@@ -1495,9 +1495,28 @@ tr:hover td{background:#f8f9fa}
           </div>
           <div id="mapaResultado" style="display:none;background:white;border:1px solid #76b7d4;
                                           border-radius:6px;padding:10px;font-size:13px">
-            <span>📍 Distancia total (ida y vuelta):</span>
-            <strong id="mapaKmLabel" style="color:#1a5276;font-size:15px"></strong>
-            <span style="color:#888;font-size:11px"> km</span>
+            <div style="margin-bottom:6px;color:#555">
+              📍 Distancia calculada (ida y vuelta):
+              <strong id="mapaKmOSRM" style="color:#888"></strong>
+              <span style="color:#888;font-size:11px"> km (referencia OSRM)</span>
+            </div>
+            <label style="font-size:12px;color:#333;display:block;margin-bottom:4px">
+              ✏️ <strong>Km totales a usar</strong> (puedes corregir si conoces la distancia real):
+            </label>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+              <input id="mapaKmLabel" type="number" min="1" step="1"
+                     style="width:90px;padding:5px 8px;border:2px solid #2980b9;border-radius:5px;
+                            font-size:15px;font-weight:bold;color:#1a5276;text-align:center"
+                     oninput="_mapaKmCalculado=parseInt(this.value)||0">
+              <span style="font-size:12px;color:#555">km ida y vuelta</span>
+              <label style="font-size:12px;color:#555;display:flex;align-items:center;gap:4px;margin-left:8px">
+                <input type="checkbox" id="mapaExtra50" onchange="
+                  var base=parseInt(document.getElementById('mapaKmLabel').value)||0;
+                  document.getElementById('mapaKmLabel').value = this.checked ? base+50 : base-50;
+                  _mapaKmCalculado=parseInt(document.getElementById('mapaKmLabel').value)||0;
+                "> +50 km ciudad
+              </label>
+            </div>
             <br>
             <label style="font-size:12px;color:#555;margin-top:6px;display:block">
               💳 Casetas estimadas (opcional):
@@ -2252,7 +2271,9 @@ async function calcularRutaMapa(){
   _mapaKmCalculado = km_total;
 
   // Mostrar resultado
-  document.getElementById('mapaKmLabel').textContent = km_total;
+  document.getElementById('mapaKmOSRM').textContent = km_total;
+  document.getElementById('mapaKmLabel').value = km_total;
+  document.getElementById('mapaExtra50').checked = false;
   document.getElementById('mapaResultado').style.display = 'block';
   status.textContent = '';
 
