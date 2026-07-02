@@ -1,0 +1,29 @@
+# Datos sensibles (email_config sí va en .gitignore; usuarios.json NO — es el seed de Railway)
+email_config.json
+*.log
+
+# Archivos subidos por usuarios
+uploads/
+
+# Archivos generados
+*.pyc
+__pycache__/
+.DS_Store
+
+# Submissions y gastos calculados (datos de producción)
+submissions/
+*/_gastos_calculados.json
+*/_config_viaje.json
+*/_aprobacion.json
+*/_overrides.json
+
+# Carpetas de viáticos individuales
+Viáticos Benavides/
+Viáticos Dr Enc/
+Viáticos INSECOM/
+Viáticos Liogero/
+Viáticos Michelin/
+Viáticos SEM-P/
+
+# Comprobaciones generadas
+Comprobación*.xlsx

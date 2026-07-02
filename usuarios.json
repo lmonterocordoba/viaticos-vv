@@ -1,0 +1,26 @@
+{
+  "bmorales": {
+    "nombre": "Brenda Morales",
+    "email": "bmorales@villarabogados.com.mx",
+    "password": "673876294d6f087c433d2af0d8d89faa85b42e582fbf6c17fb1f8a7420f42486",
+    "rol": "admin"
+  },
+  "lmontero": {
+    "nombre": "María Leticia Montero",
+    "email": "lmontero@villarabogados.com.mx",
+    "password": "0f88145ba6b038417a6827294090c30cb89663d46b0b019ebaf378821c99f182",
+    "rol": "socia"
+  },
+  "iescobar": {
+    "nombre": "Israel Escobar Espíndola",
+    "email": "iescobar@villarabogados.com.mx",
+    "password": "9526f9330e5e29187ffdf40283b30e095dc8ffec61886723a1ef569b84b7dd7d",
+    "rol": "trabajador"
+  },
+  "kruiz": {
+    "nombre": "Karla Ruíz Medina",
+    "email": "kruiz@villarabogados.com.mx",
+    "password": "28059494c4226d5b39a9b097dad16233b40ea706f8b55628fe9ad1809191e2b5",
+    "rol": "trabajador"
+  }
+}
