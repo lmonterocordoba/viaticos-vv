@@ -143,7 +143,9 @@ CASETAS_DEFAULT = {
     "AGUASCALIENTES":   1060.0,
     "CELAYA":            480.0,
     "CHIHUAHUA":        2000.0,
+    "CIUDAD DE MEXICO":  624.0,
     "CIUDAD JUAREZ":    2200.0,
+    "CDMX":              624.0,
     "COLIMA":           1100.0,
     "CULIACAN":         1800.0,
     "DURANGO":          1400.0,
@@ -162,6 +164,7 @@ CASETAS_DEFAULT = {
     "SAN LUIS POTOSI":   800.0,
     "TAMPICO":           900.0,
     "TLAXCALA":          300.0,
+    "TLALNEPANTLA":      624.0,
     "TOLUCA":            160.0,
     "TORREON":          1400.0,
     "TUXTLA GUTIERREZ": 1200.0,
@@ -1519,11 +1522,12 @@ tr:hover td{background:#f8f9fa}
             </div>
             <br>
             <label style="font-size:12px;color:#555;margin-top:6px;display:block">
-              💳 Casetas estimadas (opcional):
+              💳 Casetas (ida y vuelta):
               <input id="mapaCasetas" type="number" min="0" step="50" value="0"
-                     style="width:100px;padding:4px 6px;border:1px solid #ccc;border-radius:4px;
-                            font-size:12px;margin-left:4px">
-              <span style="font-size:11px;color:#888"> MXN ida y vuelta</span>
+                     style="width:100px;padding:4px 6px;border:2px solid #e67e22;border-radius:4px;
+                            font-size:13px;font-weight:bold;margin-left:4px;text-align:center">
+              <span style="font-size:11px;color:#888"> MXN</span>
+              <span id="mapaCasetasHint" style="font-size:11px;color:#888;margin-left:6px"></span>
             </label>
             <button type="button" onclick="guardarKmMapa()"
                     style="background:#27ae60;color:white;border:none;border-radius:5px;
@@ -2279,7 +2283,24 @@ async function calcularRutaMapa(){
 
   // Copiar destino al campo lugar
   var lugarParts = destino.split(',');
-  document.getElementById('lugar').value = lugarParts[0].trim() || destino;
+  var ciudadCorta = lugarParts[0].trim() || destino;
+  document.getElementById('lugar').value = ciudadCorta;
+
+  // Buscar casetas automáticamente
+  document.getElementById('mapaCasetasHint').textContent = '🔍 buscando casetas…';
+  fetch('/api/casetas?ciudad=' + encodeURIComponent(ciudadCorta))
+    .then(r => r.json())
+    .then(data => {
+      var hint = document.getElementById('mapaCasetasHint');
+      if(data.monto && data.monto > 0){
+        document.getElementById('mapaCasetas').value = data.monto;
+        hint.textContent = '✓ encontradas en catálogo';
+        hint.style.color = '#27ae60';
+      } else {
+        hint.textContent = '— no encontradas, ingresa manualmente';
+        hint.style.color = '#e67e22';
+      }
+    }).catch(()=>{ document.getElementById('mapaCasetasHint').textContent=''; });
 
   // Mostrar mapa
   var mapDiv = document.getElementById('mapContainer');
