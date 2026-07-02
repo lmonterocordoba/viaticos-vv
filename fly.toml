@@ -1,25 +1,30 @@
-[app]
-name = "viaticos-vv"
-primary_region = "mia"
+# fly.toml app configuration file generated for viaticos-vv on 2026-07-02T12:19:58-06:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'viaticos-vv'
+primary_region = 'dfw'
 
 [build]
-  [build.args]
 
 [env]
-  DATA_DIR = "/data"
+  DATA_DIR = '/data'
+  PORT = '8080'
+
+[[mounts]]
+  source = 'viaticos_data'
+  destination = '/data'
 
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = "off"
+  auto_stop_machines = 'off'
   auto_start_machines = true
   min_machines_running = 1
 
-[[mounts]]
-  source = "viaticos_data"
-  destination = "/data"
-
 [[vm]]
-  memory = "512mb"
-  cpu_kind = "shared"
+  memory = '512mb'
+  cpu_kind = 'shared'
   cpus = 1
+  memory_mb = 512
