@@ -17,13 +17,14 @@ submissions/
 */_aprobacion.json
 */_overrides.json
 
-# Carpetas de viáticos individuales
-Viáticos Benavides/
-Viáticos Dr Enc/
-Viáticos INSECOM/
-Viáticos Liogero/
-Viáticos Michelin/
-Viáticos SEM-P/
+# Carpetas de viáticos — excluir datos de viajes individuales pero INCLUIR tabuladores y calendario
+Viáticos Benavides/Viaje*
+Viáticos Dr Enc/Viaje*
+Viáticos INSECOM/Viaje*
+Viáticos Liogero/Viaje*
+Viáticos Liogero/Solicitud*.xlsx
+Viáticos Michelin/Viaje*
+Viáticos SEM-P/Viaje*
 
 # Comprobaciones generadas
 Comprobación*.xlsx
