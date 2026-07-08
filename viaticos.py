@@ -133,7 +133,7 @@ def load_users():
 
 # ─── EMPLEADOS QUE REQUIEREN AUTORIZACIÓN DE SOCIA ────────────────────────────
 
-EMPLOYEES_REQUIRING_SOCIA = {"iescobar", "kruiz"}
+EMPLOYEES_REQUIRING_SOCIA = {"iescobar", "kruiz", "dperez"}
 
 # ─── EMAIL ────────────────────────────────────────────────────────────────────
 

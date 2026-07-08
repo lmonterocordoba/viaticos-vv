@@ -22,5 +22,11 @@
     "email": "kruiz@villarabogados.com.mx",
     "password": "28059494c4226d5b39a9b097dad16233b40ea706f8b55628fe9ad1809191e2b5",
     "rol": "trabajador"
+  },
+  "dperez": {
+    "nombre": "Jordi Daniel Pérez Romero",
+    "email": "dperez@villarabogados.com.mx",
+    "password": "2f062ec2aaabfe54dba1ef57ae61d2d3a4130ecd9eba3b1ecf731e07c6cb0682",
+    "rol": "trabajador"
   }
 }
